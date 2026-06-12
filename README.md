@@ -1,99 +1,83 @@
-# Twitter Sentiment Analysis using TF-IDF and Naive Bayes
+# Project Summary
 
-## Project Overview
-This project performs Twitter Sentiment Analysis using TF-IDF Vectorization and a Multinomial Naive Bayes classifier..
-
-The notebook:
-- Loads a Twitter sentiment dataset (`twitter_training.csv`)
-- Performs data cleaning and preprocessing
-- Handles missing values
-- Converts text into numerical features using TF-IDF Vectorization
-- Trains a Multinomial Naive Bayes model
-- Predicts sentiment labels for new tweets
-- Demonstrates a Pipeline-based implementation for easier deployment
+This notebook performs **Twitter Sentiment Analysis** using **TF-IDF Vectorization** and a **Multinomial Naive Bayes** classifier.
 
 ## Dataset
-The dataset contains:
-- Tweet ID
-- Entity
-- Sentiment
-- Tweet Content
 
-Dataset: twitter_training.csv
-Total records: 74,681 tweets
-Features:
+- Dataset: `twitter_training.csv`
+- Total records: **74,681 tweets**
+- Features:
+  - Tweet ID
+  - Entity
+  - Sentiment (Target)
+  - Tweet Content
+- Sentiment classes:
+  - Positive
+  - Negative
+  - Neutral
+  - Irrelevant
 
-Target variable:
-- Sentiment
+## Data Quality
 
-Sentiment classes:
-- Positive
-- Negative
-- Neutral
-- Irrelevant
+- Missing values in Tweet Content: **686**
+- Valid tweet texts: **73,995**
 
-## Data Preprocessing
-The notebook applies several text-cleaning steps:
-- Convert text to lowercase
-- Remove usernames (@mentions)
-- Remove URLs
-- Remove numbers
-- Remove punctuation
-- Handle missing values
+## Workflow
 
-## Machine Learning Workflow
+1. Load Twitter sentiment dataset
+2. Clean and preprocess tweet text
+3. Convert text into numerical features using **TF-IDF**
+4. Split data into training and testing sets
+5. Train a **Multinomial Naive Bayes** model
+6. Evaluate performance using:
+   - Confusion Matrix
+   - Accuracy Score
+   - Classification Report
 
-### Feature Engineering
-Text is transformed using:
-- TF-IDF (Term Frequency–Inverse Document Frequency)
+---
 
-### Model
-The classifier used is:
-- Multinomial Naive Bayes
+# Results
 
-### Pipeline Version
-A Scikit-learn Pipeline is included to combine:
-1. Text preprocessing
-2. TF-IDF vectorization
-3. Model training
+## Overall Accuracy
 
-This simplifies model deployment and prediction on new data.
+**66.76%**
+
+## Classification Report
+
+| Sentiment | Precision | Recall | F1-Score |
+|------------|------------|---------|----------|
+| Irrelevant | 0.78 | 0.40 | 0.53 |
+| Negative | 0.63 | 0.84 | 0.72 |
+| Neutral | 0.70 | 0.55 | 0.62 |
+| Positive | 0.66 | 0.75 | 0.70 |
+
+## Average Performance
+
+- Macro F1 Score: **0.64**
+- Weighted F1 Score: **0.66**
+
+## Key Findings
+
+- The model performs best on **Negative** tweets:
+  - Recall = **84%**
+  - F1 = **72%**
+- **Positive** tweets are also classified reasonably well:
+  - Recall = **75%**
+  - F1 = **70%**
+- **Irrelevant** tweets are the hardest to identify:
+  - Recall = **40%**
+- Overall, the model correctly classifies about **2 out of every 3 tweets**.
 
 ## Example Prediction
-The notebook demonstrates sentiment prediction on custom text such as:
+
+The notebook tests a custom tweet:
 
 > "I dont know if I hate or love this product!"
 
-The trained model predicts the most likely sentiment class.
+**Predicted Sentiment:** **Negative**
 
-## Technologies Used
-- Python
-- Pandas
-- NumPy
-- Scikit-learn
-- Regular Expressions (re)
-- NLP Text Processing
+---
 
-## How to Run
+# Conclusion
 
-1. Install required packages:
-```bash
-pip install pandas numpy scikit-learn
-```
-
-2. Place `twitter_training.csv` in the project directory.
-
-3. Open and run:
-```bash
-jupyter notebook sentiment.ipynb
-```
-
-## Future Improvements
-- Hyperparameter tuning
-- Cross-validation
-- Model comparison (Logistic Regression, SVM, Random Forest)
-- Streamlit deployment
-- Model performance dashboard using Power BI
-
-## Author
-Sentiment Analysis Project developed for NLP and Machine Learning practice using TF-IDF and Naive Bayes.
+The TF-IDF + Multinomial Naive Bayes approach achieved **66.8% accuracy** on a four-class Twitter sentiment classification problem. The model is particularly effective at detecting **negative sentiment**, while performance on **neutral** and **irrelevant** tweets could be improved through better text preprocessing, hyperparameter tuning, or more advanced models such as Logistic Regression, SVM, or transformer-based NLP models.
