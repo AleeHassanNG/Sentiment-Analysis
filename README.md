@@ -1,7 +1,7 @@
 # Twitter Sentiment Analysis using TF-IDF and Naive Bayes
 
 ## Project Overview
-This project performs sentiment analysis on Twitter/X text data using Natural Language Processing (NLP) techniques and a Multinomial Naive Bayes classifier.
+This project performs Twitter Sentiment Analysis using TF-IDF Vectorization and a Multinomial Naive Bayes classifier..
 
 The notebook:
 - Loads a Twitter sentiment dataset (`twitter_training.csv`)
@@ -19,10 +19,14 @@ The dataset contains:
 - Sentiment
 - Tweet Content
 
+Dataset: twitter_training.csv
+Total records: 74,681 tweets
+Features:
+
 Target variable:
 - Sentiment
 
-Typical sentiment classes may include:
+Sentiment classes:
 - Positive
 - Negative
 - Neutral
